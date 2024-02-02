@@ -552,7 +552,7 @@
             pressure.swap();
         }
 
-        gradienSubtractProgram.bind();
+       gradienSubtractProgram.bind();
         gl.uniform2f( gradienSubtractProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight );
         gl.uniform1i( gradienSubtractProgram.uniforms.uPressure, pressure.first[ 2 ] );
         gl.uniform1i( gradienSubtractProgram.uniforms.uVelocity, velocity.first[ 2 ] );
