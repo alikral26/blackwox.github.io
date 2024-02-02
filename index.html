@@ -592,8 +592,52 @@
 
     }
 
+    var count    = 0;
+    var colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ];
+
+    canvas.addEventListener( 'mousemove', function ( e ) {
+
+        count++;
+
+        ( count > 25 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
+
+        pointers[ 0 ].down  = true;
+        pointers[ 0 ].color = colorArr;
+        pointers[ 0 ].moved = pointers[ 0 ].down;
+        pointers[ 0 ].dx    = (e.offsetX - pointers[ 0 ].x) * 10.0;
+        pointers[ 0 ].dy    = (e.offsetY - pointers[ 0 ].y) * 10.0;
+        pointers[ 0 ].x     = e.offsetX;
+        pointers[ 0 ].y     = e.offsetY;
 
     } );
+
+    canvas.addEventListener( 'touchmove', function ( e ) {
+
+        e.preventDefault();
+
+        var touches = e.targetTouches;
+
+        count++;
+
+        ( count > 25 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
+
+        for ( var i = 0, len = touches.length; i < len; i++ ) {
+
+            if ( i >= pointers.length ) pointers.push( new pointerPrototype() );
+
+            pointers[ i ].id    = touches[ i ].identifier;
+            pointers[ i ].down  = true;
+            pointers[ i ].x     = touches[ i ].pageX;
+            pointers[ i ].y     = touches[ i ].pageY;
+            pointers[ i ].color = colorArr;
+
+            var pointer = pointers[ i ];
+
+            pointer.moved = pointer.down;
+            pointer.dx    = (touches[ i ].pageX - pointer.x) * 10.0;
+            pointer.dy    = (touches[ i ].pageY - pointer.y) * 10.0;
+            pointer.x     = touches[ i ].pageX;
+            pointer.y     = touches[ i ].pageY;
 
         }
 
