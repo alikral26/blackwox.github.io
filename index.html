@@ -599,13 +599,15 @@
 
         count++;
 
-        ( count > 45 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
+        ( count > 30 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
 
         pointers[ 0 ].down  = true;
         pointers[ 0 ].color = colorArr;
         pointers[ 0 ].moved = pointers[ 0 ].down;
-        pointers[ 0 ].dx    = (e.offsetX - pointers[ 0 ].x) * 2.0;
-        pointers[ 0 ].dy    = (e.offsetY - pointers[ 0 ].y) * 2.0;
+        pointers[ 0 ].dx    = (e.offsetX - pointers[ 0 ].x) * 15.0;
+        pointers[ 0 ].dy    = (e.offsetY - pointers[ 0 ].y) * 10.0;
+        pointers[ 0 ].x     = e.offsetX;
+        pointers[ 0 ].y     = e.offsetY;
 
     } );
 
@@ -617,7 +619,7 @@
 
         count++;
 
-        ( count > 45 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
+        ( count > 30 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
 
         for ( var i = 0, len = touches.length; i < len; i++ ) {
 
@@ -632,8 +634,10 @@
             var pointer = pointers[ i ];
 
             pointer.moved = pointer.down;
-            pointer.dx    = (touches[ i ].pageX - pointer.x) * 2.0;
-            pointer.dy    = (touches[ i ].pageY - pointer.y) * 2.0;
+            pointer.dx    = (touches[ i ].pageX - pointer.x) * 15.0;
+            pointer.dy    = (touches[ i ].pageY - pointer.y) * 10.0;
+            pointer.x     = touches[ i ].pageX;
+            pointer.y     = touches[ i ].pageY;
 
         }
 
