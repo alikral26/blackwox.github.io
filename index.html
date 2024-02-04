@@ -601,7 +601,7 @@
 
         ( count > 10 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
 
-        pointers[ 0 ].down  = true;
+        pointers[ 0 ].down  = false;
         pointers[ 0 ].color = colorArr;
         pointers[ 0 ].moved = pointers[ 0 ].down;
         pointers[ 0 ].dx    = (e.offsetX - pointers[ 0 ].x) * 5.0;
@@ -626,7 +626,7 @@
             if ( i >= pointers.length ) pointers.push( new pointerPrototype() );
 
             pointers[ i ].id    = touches[ i ].identifier;
-            pointers[ i ].down  = true;
+            pointers[ i ].down  = false;
             pointers[ i ].x     = touches[ i ].pageX;
             pointers[ i ].y     = touches[ i ].pageY;
             pointers[ i ].color = colorArr;
